@@ -7,8 +7,14 @@ app = FastAPI()
 # def greet():
 #     return "Hello? World?"
 
-# URL Path
-@app.get("/hi/{who}")
+# # URL Path
+# @app.get("/hi/{who}")
+# def greet(who: str):
+#     return f"Hello {who.capitalize()}"
+
+
+# Query Parameters
+@app.get("/hi")
 def greet(who: str):
     return f"Hello {who.capitalize()}"
 
