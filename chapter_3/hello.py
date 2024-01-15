@@ -28,12 +28,12 @@ app = FastAPI()
 # HTTP Header
 @app.post("/hi")
 def greet(who: str = Header()):
-    return f"Hello? {who}?"
+    return f"Hello {who.capitalize()}"
 
 
 @app.post("/agent")
 def get_agent(user_agent: str = Header()):
-    return user_agent
+    return f"agent is '{user_agent}'"
 
 
 # Start Uvicorn internally
