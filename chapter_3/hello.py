@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Body
 
 app = FastAPI()
 
@@ -13,9 +13,15 @@ app = FastAPI()
 #     return f"Hello {who.capitalize()}"
 
 
-# Query Parameters
-@app.get("/hi")
-def greet(who: str):
+# # Query Parameters
+# @app.get("/hi")
+# def greet(who: str):
+#     return f"Hello {who.capitalize()}"
+
+
+# Body - POST request
+@app.post("/hi")
+def greet(who: str = Body(embed=True)):
     return f"Hello {who.capitalize()}"
 
 
