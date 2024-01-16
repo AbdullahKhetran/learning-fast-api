@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Body, Header
+from fastapi import FastAPI, Body, Header, Response
 
 app = FastAPI()
 
@@ -34,6 +34,17 @@ def greet(who: str = Header()):
 @app.post("/agent")
 def get_agent(user_agent: str = Header()):
     return f"agent is '{user_agent}'"
+
+
+@app.get("/happy")
+def happy(status_code=200):
+    return ":)"
+
+
+@app.get("/header/{name}/{value}")
+def header(name: str, value: str, response: Response):
+    response.headers[name] = value
+    return "normal body"
 
 
 # Start Uvicorn internally
