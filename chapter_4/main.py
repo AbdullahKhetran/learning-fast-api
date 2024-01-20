@@ -20,4 +20,4 @@ def doh2():
 for line in doh2():
     print(line)
 
-# doh2() returns a generator function and we are iterating over that instead of list
+# doh2() returns a generator function, and we are iterating over that instead of list
