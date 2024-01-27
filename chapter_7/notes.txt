@@ -1,0 +1,16 @@
+--> Django
+
+Django is bigger and more complex than Flask or FastAPI.
+Its built-in object-relational mapper (ORM) is useful for sites with major database backends
+More of a monolith than a toolkit
+
+
+Django defines routes in a single `URLConf` table rather than using decoraters.
+This makes it easier to see all routes in one place, but makes it harder tosee what URL is associated the funtion that you are looking at
+
+Whether the extra complexity and learning curve are justified depends on your application.
+
+
+--> Databases
+For relational databases, `SQLAlchemy` is an excellent package.
+Django is choosen for a site with heavy database needs
