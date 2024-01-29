@@ -1,0 +1,41 @@
+RESTful desgins have these core components
+
+Resources
+    The data elements your application manages
+IDs
+    Unique resource identifiers
+URLs
+    Structured resource and ID strings
+
+Verbs or actions
+    Terms that accompany URLs for different purposes:
+    GET
+        Retrieve a resource.
+    POST
+        Create a new resource.
+    PUT
+        Completely replace a resource.
+    PATCH
+        Partially replace a resource.
+    DELETE
+        Resource goes kaboom.
+
+
+Rules for combining them
+verb /resource/
+    Apply verb to all resources of type resource.
+verb /resource/id
+    Apply verb to the resource with ID id.
+
+
+Web request may carry more insturction to:
+- sort results
+- paginate results
+- perform other functions
+
+Parameter for these are often included as query parameters (?name=john)
+Large requests are included in HTTP body because URLs have size limits
+
+** Singulare naming scheme will be used instead of plural **
+
+
