@@ -1,0 +1,20 @@
+We will be creating a medium-sized web service to access and manage data.
+
+Full service will have 3 layers:
+1. Web: the web interface
+2. Service: the busiess logic
+3. Data: the precious DNA of the whole thing
+
+Web service will have these cross-layer components:
+1. Model: Pydantic data definations 
+2. Tests: Unit, integration, and end-to-end tests
+
+
+Our Application will allow access to manage data about `cryptids` and `explorers`
+- Retrieve
+- Create
+- Modify
+- Replace
+- Delete
+
+useful command: `$ export PYTHONPATH=$PWD/src`
