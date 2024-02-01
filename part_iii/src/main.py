@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from .web import explorer
+from web import explorer
 
 app = FastAPI()
 
