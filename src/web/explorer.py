@@ -1,7 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from model.explorer import Explorer
-import data.explorer as service
-# from service import explorer as service
+from service import explorer as service
 from errors import Duplicate, Missing
 
 router = APIRouter(prefix="/explorer")
