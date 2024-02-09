@@ -17,6 +17,12 @@ def model_to_dict(explorer: Explorer) -> dict:
     return explorer.dict()
 
 
+def get_all() -> list[Explorer]:
+    qry = "select * from explorer"
+    curs.execute(qry)
+    return [row_to_model(row) for row in curs.fetchall()]
+
+
 def get_one(name: str) -> Explorer:
     qry = "select * from explorer where name=:name"
     params = {"name": name}
@@ -26,12 +32,6 @@ def get_one(name: str) -> Explorer:
         return row_to_model(row)
     else:
         raise Missing(msg=f"Explorer {name} not found")
-
-
-def get_all() -> list[Explorer]:
-    qry = "select * from explorer"
-    curs.execute(qry)
-    return [row_to_model(row) for row in curs.fetchall()]
 
 
 def create(explorer: Explorer) -> Explorer:
