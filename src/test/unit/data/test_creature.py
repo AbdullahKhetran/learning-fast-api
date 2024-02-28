@@ -1,4 +1,3 @@
-from data import creature
 import os
 import pytest
 from model.creature import Creature
@@ -7,10 +6,13 @@ from errors import Missing, Duplicate
 # need to set this before importing from data.init
 os.environ["CRYPTID_SQLITE_DB"] = ":memory"
 
+from data import creature
 
 @pytest.fixture
 def sample() -> Creature:
-    return Creature(name="yeti", country="CN", area="Himalayas",
+    return Creature(name="yeti",
+                    country="CN", 
+                    area="Himalayas",
                     description="Harmless Himalayan", aka="Abominable Snowman")
 
 
