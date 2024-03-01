@@ -1,0 +1,125 @@
+command: schemathesis run http://localhost:8000/openapi.json --experimental=openapi-3.1
+
+
+Output In Terminal:
+
+===================== Schemathesis test session starts =====================
+Schema location: http://localhost:8000/openapi.json
+Base URL: http://localhost:8000/
+Specification version: Open API 3.1.0
+Random seed: 310093188241069216657456072567406269240
+Workers: 1
+Collected API operations: 12
+Collected API links: 0
+
+GET /explorer/ .                                                      [  8%]
+POST /explorer/ .                                                     [ 16%]
+PATCH /explorer/ F                                                    [ 25%]
+GET /explorer .                                                       [ 33%]
+POST /explorer .                                                      [ 41%]
+GET /explorer/{name} .                                                [ 50%]
+DELETE /explorer/{name} .                                             [ 58%]
+GET /creature/ F                                                      [ 66%]
+POST /creature/ F                                                     [ 75%]
+PATCH /creature/ F                                                    [ 83%]
+GET /creature/{name} F                                                [ 91%]
+DELETE /creature/{name} F                                             [100%]
+
+================================= FAILURES =================================
+_____________________________ PATCH /explorer/ _____________________________
+1. Test Case ID: UXHmbO
+
+- Server error
+
+[500] Internal Server Error:
+
+    `Internal Server Error`
+
+Reproduce with: 
+
+    curl -X PATCH -H 'Content-Type: application/json' -d '{"country": "", "description": "", "name": ""}' 'http://localhost:8000/explorer/?name='
+
+______________________________ GET /creature/ ______________________________
+1. Test Case ID: MLDG5b
+
+- Server error
+
+[500] Internal Server Error:
+
+    `Internal Server Error`
+
+Reproduce with: 
+
+    curl -X GET http://localhost:8000/creature/
+
+_____________________________ POST /creature/ ______________________________
+1. Test Case ID: 9JOboL
+
+- Server error
+
+[500] Internal Server Error:
+
+    `Internal Server Error`
+
+Reproduce with: 
+
+    curl -X POST -H 'Content-Type: application/json' -d '{"aka": "", "area": "", "country": "", "description": "", "name": ""}' http://localhost:8000/creature/
+
+_____________________________ PATCH /creature/ _____________________________
+1. Test Case ID: CtcrtW
+
+- Server error
+
+[500] Internal Server Error:
+
+    `Internal Server Error`
+
+Reproduce with: 
+
+    curl -X PATCH -H 'Content-Type: application/json' -d '{"aka": "", "area": "", "country": "", "description": "", "name": ""}' 'http://localhost:8000/creature/?name='
+
+___________________________ GET /creature/{name} ___________________________
+1. Test Case ID: 3Cb9kb
+
+- Server error
+
+[500] Internal Server Error:
+
+    `Internal Server Error`
+
+Reproduce with: 
+
+    curl -X GET http://localhost:8000/creature/null
+
+_________________________ DELETE /creature/{name} __________________________
+1. Test Case ID: sFh27t
+
+- Server error
+
+[500] Internal Server Error:
+
+    `Internal Server Error`
+
+Reproduce with: 
+
+    curl -X DELETE http://localhost:8000/creature/0
+
+================================= SUMMARY ==================================
+
+Performed checks:
+    not_a_server_error                    402 / 468 passed          FAILED 
+
+Experimental Features:
+  - OpenAPI 3.1: Support for response validation
+    Feedback: https://github.com/schemathesis/schemathesis/discussions/1822
+
+Your feedback is crucial for experimental features. Please visit the provided URL(s) to share your thoughts.
+
+Note: Use the 'X-Schemathesis-TestCaseId' header to correlate test case ids from failure messages with server logs for debugging.
+
+Note: To replicate these test failures, rerun with `--hypothesis-seed=310093188241069216657456072567406269240`
+
+Tip: Use the `--report` CLI option to visualize test results via Schemathesis.io.
+We run additional conformance checks on reports from public repos.
+
+======================= 6 passed, 6 failed in 26.41s =======================
