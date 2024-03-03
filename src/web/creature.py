@@ -11,12 +11,12 @@ from errors import Missing, Duplicate
 router = APIRouter(prefix="/creature")
 
 
-@router.get("/")
+@router.get("/")  # failing
 def get_all() -> list[Creature]:
     return service.get_all()
 
 
-@router.get("/{name}")
+@router.get("/{name}")  # failing
 def get_one(name) -> Creature:
     try:
         return service.get_one(name)
@@ -24,7 +24,7 @@ def get_one(name) -> Creature:
         raise HTTPException(status_code=404, detail=exc.msg)
 
 
-@router.post("/", status_code=201)
+@router.post("/", status_code=201)  # failing
 def create(creature: Creature) -> Creature:
     try:
         return service.create(creature)
@@ -32,7 +32,7 @@ def create(creature: Creature) -> Creature:
         raise HTTPException(status_code=409, detail=exc.msg)
 
 
-@router.patch("/")
+@router.patch("/")  # failing
 def modify(name: str, creature: Creature) -> Creature:
     try:
         return service.modify(name, creature)
@@ -40,7 +40,7 @@ def modify(name: str, creature: Creature) -> Creature:
         raise HTTPException(status_code=404, detail=exc.msg)
 
 
-@router.delete("/{name}")
+@router.delete("/{name}")  # failing
 def delete(name: str) -> None:
     try:
         return service.delete(name)

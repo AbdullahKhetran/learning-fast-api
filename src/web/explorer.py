@@ -29,7 +29,7 @@ def create(explorer: Explorer) -> Explorer:
         raise HTTPException(status_code=404, detail=exc.msg)
 
 
-@router.patch("/")
+@router.patch("/")  # failing
 def modify(name: str, explorer: Explorer) -> Explorer:
     try:
         return service.modify(name, explorer)
