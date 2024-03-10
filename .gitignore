@@ -1,3 +1,4 @@
 **/*.env
 **/*__pycache__
 .hypothesis
+src/1GB.bin
