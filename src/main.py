@@ -1,6 +1,7 @@
 import uvicorn
 from fastapi import FastAPI, File, UploadFile
 from fastapi.responses import FileResponse, StreamingResponse
+from fastapi.staticfiles import StaticFiles
 from web import explorer, creature, user
 from pathlib import Path
 from typing import Generator
@@ -46,6 +47,13 @@ async def download_big_file(name: str):
     )
     return response
 
+
+# Serving Static files
+top = Path(__file__).parent
+
+app.mount("/static",
+          StaticFiles(directory=f"{top}/static", html=True),
+          name="free")
 
 # starting uvicorn
 if __name__ == "__main__":
